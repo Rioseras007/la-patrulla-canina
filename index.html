@@ -54,7 +54,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            padding-bottom: 100px;
+            padding-bottom: 200px;
         }
 
         /* Splash Screen */
@@ -503,21 +503,21 @@
 
         /* Visualizer Canvas */
         .vfx-container {
-            position: absolute;
-            top: 100%;
-            /* Position right below the player bar */
+            position: fixed;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 80px;
+            height: 180px;
             pointer-events: none;
-            z-index: -1;
+            z-index: 85;
+            background: linear-gradient(to bottom, rgba(133, 76, 230, 0.15), transparent);
         }
 
         #vfxCanvas {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 0 10px var(--primary));
-            opacity: 0.6;
+            filter: drop-shadow(0 0 20px var(--primary));
+            opacity: 0.8;
         }
 
         header {
