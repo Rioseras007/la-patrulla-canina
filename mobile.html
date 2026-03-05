@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LA PATRULLA CANINA | VICTORIA MAGISTRAL (MÓVIL)</title>
+    <meta name="description"
+        content="La Patrulla Canina - Experiencia de música y entretenimiento de alto nivel. Versión móvil.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Bebas+Neue&display=swap"
@@ -352,24 +354,24 @@
 
     <footer>
         <div class="modern-social">
-            <a href="https://www.facebook.com/AlfonsoRubioRioseras" target="_blank" class="social-link facebook"
-                title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank" class="social-link instagram" title="Instagram"><i
-                    class="fab fa-instagram"></i></a>
-            <a href="https://x.com/alfrubrio" target="_blank" class="social-link x-twitter" title="X (Twitter)"><i
-                    class="fab fa-x-twitter"></i></a>
-            <a href="https://www.youtube.com/@AlfonsoRubioRioseras" target="_blank" class="social-link youtube"
-                title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@alfonsorubio007" target="_blank" class="social-link tiktok"
-                title="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://discord.com/" target="_blank" class="social-link discord" title="Discord"><i
-                    class="fab fa-discord"></i></a>
-            <a href="https://web.whatsapp.com/" target="_blank" class="social-link whatsapp" title="WhatsApp"><i
-                    class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/alfonsorubiorioseras/" target="_blank" class="social-link linkedin"
-                title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/Rioseras007" target="_blank" class="social-link github" title="GitHub"><i
-                    class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/AlfonsoRubioRioseras" target="_blank" rel="noopener noreferrer"
+                class="social-link facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link instagram"
+                title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/alfrubrio" target="_blank" rel="noopener noreferrer" class="social-link x-twitter"
+                title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@AlfonsoRubioRioseras" target="_blank" rel="noopener noreferrer"
+                class="social-link youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@alfonsorubio007" target="_blank" rel="noopener noreferrer"
+                class="social-link tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="social-link discord"
+                title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp"
+                title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/alfonsorubiorioseras/" target="_blank" rel="noopener noreferrer"
+                class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Rioseras007" target="_blank" rel="noopener noreferrer"
+                class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
         <p>© 2026 LA PATRULLA CANINA | SQUAD RECORDS PRO</p>
     </footer>
@@ -415,7 +417,8 @@
             { "id": 9, "t": "Medikit para el Alma", "file": "assets/09_Medikit_Alma.mp3", "art": "assets/__track_9__medikit_para_el_alma.jpg" },
             { "id": 10, "t": "El Salto del Comandante", "file": "assets/10_Salto_Gerbi.mp3", "art": "assets/__track_10__el_salto_del_comandante.jpg" },
             { "id": 11, "t": "Victoria Magistral", "file": "assets/11_Victoria_Magistral.mp3", "art": "assets/__track_11__victoria_magistral.jpg" },
-            { "id": 12, "t": "GG Patrulla", "file": "assets/12_GG_Patrulla.mp3", "art": "assets/__track_12__gg_patrulla.jpg" }
+            { "id": 12, "t": "GG Patrulla", "file": "assets/12_GG_Patrulla.mp3", "art": "assets/__track_12__gg_patrulla.jpg" },
+            { "id": 13, "t": "Pause la partida, Antonio", "file": "assets/13_Pause la partida, Antonio.mp3", "art": "assets/__track_13__pause_la_partida_antonio.jpg" }
         ];
 
         let index = -1;
@@ -488,6 +491,9 @@
             const sec = Math.floor(s % 60);
             return `${m}:${sec < 10 ? '0' : ''}${sec}`;
         }
+
+        // Auto-play next track when current one ends
+        audio.onended = () => next();
 
         render();
     </script>

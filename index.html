@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="La Patrulla Canina - Experiencia de música y entretenimiento de alto nivel. Explora nuestro catálogo exclusivo de tracks y merchandise.">
+    <meta name="description"
+        content="La Patrulla Canina - Experiencia de música y entretenimiento de alto nivel. Explora nuestro catálogo exclusivo de tracks y merchandise.">
     <meta name="theme-color" content="#854CE6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -54,7 +55,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            padding-bottom: 220px;
+            padding-bottom: 100px;
         }
 
         /* Splash Screen */
@@ -117,6 +118,11 @@
         .promo-hero {
             padding: 8rem 2rem 4rem;
             text-align: center;
+            transition: padding-top 0.6s ease;
+        }
+
+        body.player-active .promo-hero {
+            padding-top: calc(8rem + 290px);
         }
 
         .promo-hero h1 {
@@ -386,15 +392,10 @@
             top: 110px;
             left: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem 4rem;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
             z-index: 90;
             /* Below header (z-index 100) */
-            border-bottom: 1px solid var(--primary);
             opacity: 0;
             pointer-events: none;
             transform: translateY(-20px);
@@ -406,6 +407,16 @@
             pointer-events: auto;
             transform: translateY(0);
             box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-bar-controls {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--primary);
         }
 
         .player-track {
@@ -503,13 +514,10 @@
 
         /* Visualizer Canvas */
         .vfx-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative;
             width: 100%;
             height: 200px;
             pointer-events: none;
-            z-index: 85;
             background: linear-gradient(to bottom, rgba(133, 76, 230, 0.3), rgba(0, 242, 255, 0.1) 50%, transparent);
         }
 
@@ -692,24 +700,24 @@
 
         <footer>
             <div class="modern-social">
-                <a href="https://www.facebook.com/AlfonsoRubioRioseras" target="_blank" class="social-link facebook"
-                    title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://instagram.com" target="_blank" class="social-link instagram" title="Instagram"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://x.com/alfrubrio" target="_blank" class="social-link x-twitter" title="X (Twitter)"><i
-                        class="fab fa-x-twitter"></i></a>
-                <a href="https://www.youtube.com/@AlfonsoRubioRioseras" target="_blank" class="social-link youtube"
-                    title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.tiktok.com/@alfonsorubio007" target="_blank" class="social-link tiktok"
-                    title="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://discord.com/" target="_blank" class="social-link discord" title="Discord"><i
-                        class="fab fa-discord"></i></a>
-                <a href="https://web.whatsapp.com/" target="_blank" class="social-link whatsapp" title="WhatsApp"><i
-                        class="fab fa-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/in/alfonsorubiorioseras/" target="_blank" class="social-link linkedin"
-                    title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/Rioseras007" target="_blank" class="social-link github" title="GitHub"><i
-                        class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/AlfonsoRubioRioseras" target="_blank" rel="noopener noreferrer"
+                    class="social-link facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link instagram"
+                    title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/alfrubrio" target="_blank" rel="noopener noreferrer"
+                    class="social-link x-twitter" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com/@AlfonsoRubioRioseras" target="_blank" rel="noopener noreferrer"
+                    class="social-link youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@alfonsorubio007" target="_blank" rel="noopener noreferrer"
+                    class="social-link tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="social-link discord"
+                    title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer"
+                    class="social-link whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/alfonsorubiorioseras/" target="_blank" rel="noopener noreferrer"
+                    class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Rioseras007" target="_blank" rel="noopener noreferrer"
+                    class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
             <p>© 2026 LA PATRULLA CANINA | SQUAD RECORDS PRO</p>
         </footer>
@@ -718,35 +726,37 @@
             <div class="vfx-container">
                 <canvas id="vfxCanvas"></canvas>
             </div>
-            <div class="player-track">
-                <img src="" alt="" class="player-art" id="playerArt">
-                <div class="player-info">
-                    <h3 id="pTitle">NOMBRE DE LA MISIÓN</h3>
-                    <p id="pArtist">SQUAD ID</p>
-                </div>
-            </div>
-            <div class="player-controls">
-                <div class="control-btns">
-                    <button class="btn-ctrl" onclick="prev()">⏮</button>
-                    <button class="btn-ctrl btn-play-big" onclick="toggle()" id="playBtn">▶</button>
-                    <button class="btn-ctrl" onclick="next()">⏭</button>
-                </div>
-                <div class="progress-wrapper">
-                    <span id="curT">0:00</span>
-                    <div class="progress-area" onclick="seek(event)">
-                        <div class="progress-handle" id="pHandle"></div>
+            <div class="player-bar-controls">
+                <div class="player-track">
+                    <img src="" alt="" class="player-art" id="playerArt">
+                    <div class="player-info">
+                        <h3 id="pTitle">NOMBRE DE LA MISIÓN</h3>
+                        <p id="pArtist">SQUAD ID</p>
                     </div>
-                    <span id="dur">0:00</span>
                 </div>
-            </div>
-            <div class="volume-wrapper">
-                <div id="vfxBtn" class="btn-vfx active" onclick="event.stopPropagation(); toggleVfx()" title="ACTIVAR/DESACTIVAR ECUALIZADOR">⚡</div>
-                <span style="font-size: 0.8rem; color: var(--gold); font-weight: 900;">VOL</span>
-                <input type="range" min="0" max="1" step="0.05" value="1" oninput="audio.volume = this.value"
-                    style="accent-color: var(--secondary); cursor: pointer;">
+                <div class="player-controls">
+                    <div class="control-btns">
+                        <button class="btn-ctrl" onclick="prev()">⏮</button>
+                        <button class="btn-ctrl btn-play-big" onclick="toggle()" id="playBtn">▶</button>
+                        <button class="btn-ctrl" onclick="next()">⏭</button>
+                    </div>
+                    <div class="progress-wrapper">
+                        <span id="curT">0:00</span>
+                        <div class="progress-area" onclick="seek(event)">
+                            <div class="progress-handle" id="pHandle"></div>
+                        </div>
+                        <span id="dur">0:00</span>
+                    </div>
+                </div>
+                <div class="volume-wrapper">
+                    <div id="vfxBtn" class="btn-vfx active" onclick="event.stopPropagation(); toggleVfx()"
+                        title="ACTIVAR/DESACTIVAR ECUALIZADOR">⚡</div>
+                    <span style="font-size: 0.8rem; color: var(--gold); font-weight: 900;">VOL</span>
+                    <input type="range" min="0" max="1" step="0.05" value="1" oninput="audio.volume = this.value"
+                        style="accent-color: var(--secondary); cursor: pointer;">
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <audio id="audioElement"></audio>
@@ -881,12 +891,13 @@
             document.getElementById('pArtist').innerText = "PATRULLA CANINA OFFICIAL";
             document.getElementById('playerArt').src = song.art;
             document.getElementById('playerBar').classList.add('active');
+            document.body.classList.add('player-active');
             document.getElementById('playBtn').innerText = '⏸';
 
             // Inicializar Web Audio API
             initAudioContext();
 
-            audio.play().catch(e => console.log("Unlock needed"));
+            audio.play().catch(e => console.warn("Error de reproducción:", e.message));
             render();
             // Focus on player
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -916,59 +927,92 @@
         function renderVFX() {
             requestAnimationFrame(renderVFX);
             vCtx.clearRect(0, 0, vCanvas.width, vCanvas.height);
-            if (!vfxEnabled || !analyser) return;
 
-            analyser.getByteFrequencyData(dataArray);
+            // Si VFX desactivado, solo fondo oscuro
+            if (!vfxEnabled) {
+                vCtx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+                vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
+                return;
+            }
 
             const bars = 64;
             const barWidth = vCanvas.width / bars;
-            const barGap = 1.5;
+            const barGap = 2;
+            const isPlaying = !audio.paused && !audio.ended;
+            const t = performance.now() / 1000;
 
-            // Dibujar fondo oscuro estilo Winamp
-            vCtx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            // Intentar obtener datos reales del analyser
+            let useRealData = false;
+            if (analyser && dataArray) {
+                analyser.getByteFrequencyData(dataArray);
+                // Comprobar si hay datos reales (no todos ceros por CORS)
+                const sum = dataArray.reduce((a, b) => a + b, 0);
+                useRealData = sum > 0;
+            }
+
+            // Fondo oscuro
+            vCtx.fillStyle = 'rgba(0, 0, 0, 0.85)';
             vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
 
-            // Dibujar gradiente de fondo
-            const gradient = vCtx.createLinearGradient(0, 0, 0, vCanvas.height);
-            gradient.addColorStop(0, 'rgba(133, 76, 230, 0.2)');
-            gradient.addColorStop(1, 'rgba(0, 242, 255, 0.05)');
-            vCtx.fillStyle = gradient;
+            // Gradiente de fondo sutil
+            const bgGrad = vCtx.createLinearGradient(0, 0, 0, vCanvas.height);
+            bgGrad.addColorStop(0, 'rgba(133, 76, 230, 0.15)');
+            bgGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            vCtx.fillStyle = bgGrad;
             vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
 
-            // Dibujar las barras del ecualizador
+            // Dibujar las barras
             for (let i = 0; i < bars; i++) {
-                const index = Math.floor((i / bars) * dataArray.length);
-                const value = dataArray[index] / 255;
-                
-                // Altura de barra MÁS AGRESIVA - mínimo 25% de altura
-                let barHeight = value * vCanvas.height * 0.8;
-                barHeight = Math.max(barHeight, vCanvas.height * 0.25); // Mínimo 25%
+                let value;
+
+                if (useRealData) {
+                    // Datos reales del Web Audio API
+                    const barIndex = Math.floor((i / bars) * dataArray.length);
+                    value = dataArray[barIndex] / 255;
+                } else if (isPlaying) {
+                    // FALLBACK: Simulación animada cuando CORS bloquea datos
+                    // Genera ondas pseudo-aleatorias basadas en el tiempo y la posición
+                    const freq1 = Math.sin(t * 2.5 + i * 0.3) * 0.3;
+                    const freq2 = Math.sin(t * 4.1 + i * 0.15) * 0.2;
+                    const freq3 = Math.sin(t * 1.7 + i * 0.5) * 0.15;
+                    const bass = i < 10 ? 0.25 * Math.sin(t * 3.0 + i * 0.2) : 0;
+                    const treble = i > 50 ? 0.15 * Math.sin(t * 5.5 + i * 0.4) : 0;
+                    value = 0.35 + freq1 + freq2 + freq3 + bass + treble;
+                    value = Math.max(0.08, Math.min(1, value));
+                } else {
+                    // Audio pausado o no iniciado: barras mínimas
+                    value = 0.04 + Math.sin(t * 0.5 + i * 0.2) * 0.03;
+                }
+
+                // Altura de barra
+                let barHeight = value * vCanvas.height * 0.85;
+                barHeight = Math.max(barHeight, 4);
 
                 const x = i * barWidth + barGap / 2;
                 const y = vCanvas.height - barHeight;
 
-                // Gradiente de colores: Verde -> Amarillo -> Rojo
-                let color;
-                if (value < 0.33) {
-                    color = `rgb(100, 255, 100)`; // Verde brillante
-                } else if (value < 0.66) {
-                    const t = (value - 0.33) / 0.33;
-                    color = `rgb(${Math.floor(255 * t)}, 255, 50)`; // Verde a Amarillo
-                } else {
-                    color = `rgb(255, 100, 0)`; // Amarillo a Rojo
-                }
+                // Gradiente vertical en cada barra (verde abajo → amarillo → rojo arriba)
+                const barGrad = vCtx.createLinearGradient(x, vCanvas.height, x, y);
+                barGrad.addColorStop(0, '#00ff66');    // Verde neón abajo
+                barGrad.addColorStop(0.5, '#ffff00');  // Amarillo centro
+                barGrad.addColorStop(0.8, '#ff6600');  // Naranja
+                barGrad.addColorStop(1, '#ff0044');     // Rojo arriba
 
-                // Barra principal con mucho glow
-                vCtx.fillStyle = color;
-                vCtx.shadowColor = color;
-                vCtx.shadowBlur = 20;
-                vCtx.shadowOffsetX = 0;
-                vCtx.shadowOffsetY = 0;
+                // Barra principal con glow
+                vCtx.fillStyle = barGrad;
+                vCtx.shadowColor = value > 0.5 ? '#ff6600' : '#00ff66';
+                vCtx.shadowBlur = 12;
                 vCtx.fillRect(x, y, barWidth - barGap, barHeight);
-                
-                // Reflejo superior
-                vCtx.globalAlpha = 0.5;
-                vCtx.fillRect(x, 2, barWidth - barGap, barHeight * 0.5);
+
+                // Highlight brillante en el tope de cada barra
+                vCtx.shadowBlur = 0;
+                vCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                vCtx.fillRect(x, y, barWidth - barGap, 2);
+
+                // Reflejo inferior sutil
+                vCtx.globalAlpha = 0.15;
+                vCtx.fillStyle = barGrad;
+                vCtx.fillRect(x, vCanvas.height, barWidth - barGap, -barHeight * 0.3);
                 vCtx.globalAlpha = 1;
             }
 
@@ -988,6 +1032,9 @@
             return `${m}:${sec < 10 ? '0' : ''}${sec}`;
         }
 
+        // Auto-play next track when current one ends
+        audio.onended = () => next();
+
         // Initial render
         render();
 
@@ -997,7 +1044,7 @@
             const cards = document.querySelectorAll('.song-card');
             cards.forEach((card, i) => {
                 const title = tracks[i].t.toLowerCase();
-                card.style.display = title.includes(val) ? 'block' : 'none';
+                card.style.display = title.includes(val) ? 'flex' : 'none';
             });
         };
     </script>
