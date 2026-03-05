@@ -1,0 +1,122 @@
+# .gitignore - Archivos y directorios a ignorar en Git
+
+# Archivos del Sistema Operativo
+.DS_Store
+.DS_Store?
+*.swp
+*.swo
+*~
+Thumbs.db
+Desktop.ini
+
+# Editor y IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+*.iml
+
+# Node.js (si se usa npm para gestionar dependencias)
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log*
+
+# Entornos virtuales Python (para herramientas de desarrollo)
+venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+pip-log.txt
+
+# Archivos de compilación
+*.o
+*.out
+*.class
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+
+# Directorios de compilación
+dist/
+build/
+out/
+
+# Cache
+.cache/
+.eslintcache
+
+# Archivos de sistema
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Configuración personal del desarrollador
+.local/
+.config/
+
+# OS specific
+.AppleDouble/
+.LSOverride/
+
+# Archivos de macOS específicamente
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.aaplignore
+
+# Windows
+ehthumbs.db
+
+# Archivos de log
+*.log
+logs/
+
+# Archivos de auditoría
+audit-*.json
+
+# Secretos y credenciales (NUNCA commitear)
+.env
+.env.*.local
+secrets/
+credentials.json
+private-key.pem
+
+# Archivos comprimidos (a menos que sean necesarios)
+*.zip
+*.tar.gz
+*.rar
+
+# sass/less compilados (si se usa preprocesamiento)
+*.css.map
+*.scss
+*.less
+
+# Directorios de terceros no necesarios para el proyecto
+third_party/
+vendor/
+
+# Archivos generados por herramientas de build
+.grunt/
+.gulp/
+.parcel-cache/
+.parcel-cache
+
+---
+
+# Nota: Revisar periódicamente este archivo para mantenerlo actualizado
+# Última revisión: Marzo 2026
