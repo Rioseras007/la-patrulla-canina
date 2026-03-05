@@ -54,7 +54,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            padding-bottom: 200px;
+            padding-bottom: 220px;
         }
 
         /* Splash Screen */
@@ -507,18 +507,20 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 180px;
+            height: 200px;
             pointer-events: none;
             z-index: 85;
-            background: linear-gradient(to bottom, rgba(133, 76, 230, 0.15), transparent);
+            background: linear-gradient(to bottom, rgba(133, 76, 230, 0.3), rgba(0, 242, 255, 0.1) 50%, transparent);
         }
 
         #vfxCanvas {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 0 30px var(--primary)) brightness(1.1);
+            width: 100% !important;
+            height: 200px !important;
+            min-height: 200px;
+            filter: drop-shadow(0 0 30px var(--primary)) brightness(1.2);
             opacity: 1;
             display: block;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         header {
@@ -905,8 +907,10 @@
         }
 
         function resize() {
-            vCanvas.width = vCanvas.offsetWidth;
-            vCanvas.height = vCanvas.offsetHeight;
+            const canvas = document.getElementById('vfxCanvas');
+            vCanvas.width = canvas.offsetWidth || window.innerWidth;
+            vCanvas.height = 200; // Altura fija de 200px
+            console.log(`Canvas resized to: ${vCanvas.width}x${vCanvas.height}`);
         }
 
         function renderVFX() {
@@ -921,7 +925,14 @@
             const barGap = 1.5;
 
             // Dibujar fondo oscuro estilo Winamp
-            vCtx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+            vCtx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
+
+            // Dibujar gradiente de fondo
+            const gradient = vCtx.createLinearGradient(0, 0, 0, vCanvas.height);
+            gradient.addColorStop(0, 'rgba(133, 76, 230, 0.2)');
+            gradient.addColorStop(1, 'rgba(0, 242, 255, 0.05)');
+            vCtx.fillStyle = gradient;
             vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
 
             // Dibujar las barras del ecualizador
@@ -929,34 +940,35 @@
                 const index = Math.floor((i / bars) * dataArray.length);
                 const value = dataArray[index] / 255;
                 
-                // Altura de barra con mínimo visible
-                let barHeight = value * vCanvas.height * 0.85;
-                barHeight = Math.max(barHeight, vCanvas.height * 0.15); // Mínimo 15% de altura
+                // Altura de barra MÁS AGRESIVA - mínimo 25% de altura
+                let barHeight = value * vCanvas.height * 0.8;
+                barHeight = Math.max(barHeight, vCanvas.height * 0.25); // Mínimo 25%
 
                 const x = i * barWidth + barGap / 2;
                 const y = vCanvas.height - barHeight;
 
-                // Gradiente de colores: Verde -> Amarillo -> Rojo (estilo Winamp)
+                // Gradiente de colores: Verde -> Amarillo -> Rojo
                 let color;
                 if (value < 0.33) {
-                    color = `rgb(0, ${Math.floor(100 + 155 * (value / 0.33))}, 0)`; // Verde brillante
+                    color = `rgb(100, 255, 100)`; // Verde brillante
                 } else if (value < 0.66) {
                     const t = (value - 0.33) / 0.33;
-                    color = `rgb(${Math.floor(255 * t)}, 255, 0)`; // Verde a Amarillo
+                    color = `rgb(${Math.floor(255 * t)}, 255, 50)`; // Verde a Amarillo
                 } else {
-                    const t = (value - 0.66) / 0.34;
-                    color = `rgb(255, ${Math.floor(200 * (1 - t))}, 0)`; // Amarillo a Rojo
+                    color = `rgb(255, 100, 0)`; // Amarillo a Rojo
                 }
 
-                // Barra principal con efecto glow
+                // Barra principal con mucho glow
                 vCtx.fillStyle = color;
                 vCtx.shadowColor = color;
-                vCtx.shadowBlur = 15;
+                vCtx.shadowBlur = 20;
+                vCtx.shadowOffsetX = 0;
+                vCtx.shadowOffsetY = 0;
                 vCtx.fillRect(x, y, barWidth - barGap, barHeight);
                 
                 // Reflejo superior
-                vCtx.globalAlpha = 0.35;
-                vCtx.fillRect(x, 2, barWidth - barGap, barHeight * 0.6);
+                vCtx.globalAlpha = 0.5;
+                vCtx.fillRect(x, 2, barWidth - barGap, barHeight * 0.5);
                 vCtx.globalAlpha = 1;
             }
 
