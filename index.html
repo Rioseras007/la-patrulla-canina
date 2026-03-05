@@ -551,16 +551,26 @@
         .btn-vfx {
             font-size: 1.5rem;
             cursor: pointer;
-            opacity: 0.3;
+            opacity: 0.4;
             transition: 0.3s;
-            filter: grayscale(1) blur(1px);
+            filter: grayscale(1) brightness(0.6);
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-vfx:hover {
+            opacity: 0.7;
         }
 
         .btn-vfx.active {
             opacity: 1;
-            filter: grayscale(0) blur(0);
-            transform: scale(1.2);
+            filter: grayscale(0) brightness(1);
+            transform: scale(1.15);
             text-shadow: 0 0 20px var(--gold);
+            background: rgba(255, 215, 0, 0.1);
         }
 
         .volume-wrapper {
@@ -727,7 +737,7 @@
                 </div>
             </div>
             <div class="volume-wrapper">
-                <div id="vfxBtn" class="btn-vfx active" onclick="toggleVfx()" title="ACTIVAR ECUALIZADOR">⚡</div>
+                <div id="vfxBtn" class="btn-vfx active" onclick="event.stopPropagation(); toggleVfx()" title="ACTIVAR/DESACTIVAR ECUALIZADOR">⚡</div>
                 <span style="font-size: 0.8rem; color: var(--gold); font-weight: 900;">VOL</span>
                 <input type="range" min="0" max="1" step="0.05" value="1" oninput="audio.volume = this.value"
                     style="accent-color: var(--secondary); cursor: pointer;">
