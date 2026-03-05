@@ -516,8 +516,9 @@
         #vfxCanvas {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 0 20px var(--primary));
-            opacity: 0.8;
+            filter: drop-shadow(0 0 30px var(--primary)) brightness(1.1);
+            opacity: 1;
+            display: block;
         }
 
         header {
@@ -917,17 +918,20 @@
 
             const bars = 64;
             const barWidth = vCanvas.width / bars;
-            const barGap = 2;
+            const barGap = 1.5;
 
             // Dibujar fondo oscuro estilo Winamp
-            vCtx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+            vCtx.fillStyle = 'rgba(0, 0, 0, 0.6)';
             vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
 
             // Dibujar las barras del ecualizador
             for (let i = 0; i < bars; i++) {
                 const index = Math.floor((i / bars) * dataArray.length);
                 const value = dataArray[index] / 255;
-                const barHeight = value * vCanvas.height * 0.95;
+                
+                // Altura de barra con mínimo visible
+                let barHeight = value * vCanvas.height * 0.85;
+                barHeight = Math.max(barHeight, vCanvas.height * 0.15); // Mínimo 15% de altura
 
                 const x = i * barWidth + barGap / 2;
                 const y = vCanvas.height - barHeight;
@@ -935,27 +939,24 @@
                 // Gradiente de colores: Verde -> Amarillo -> Rojo (estilo Winamp)
                 let color;
                 if (value < 0.33) {
-                    color = `rgb(0, ${Math.floor(255 * (value / 0.33))}, 0)`; // Verde
+                    color = `rgb(0, ${Math.floor(100 + 155 * (value / 0.33))}, 0)`; // Verde brillante
                 } else if (value < 0.66) {
                     const t = (value - 0.33) / 0.33;
                     color = `rgb(${Math.floor(255 * t)}, 255, 0)`; // Verde a Amarillo
                 } else {
                     const t = (value - 0.66) / 0.34;
-                    color = `rgb(255, ${Math.floor(255 * (1 - t))}, 0)`; // Amarillo a Rojo
+                    color = `rgb(255, ${Math.floor(200 * (1 - t))}, 0)`; // Amarillo a Rojo
                 }
 
-                // Efecto de espejo (simétrico  arriba-abajo)
+                // Barra principal con efecto glow
                 vCtx.fillStyle = color;
                 vCtx.shadowColor = color;
-                vCtx.shadowBlur = 10;
-                
-                // Barra principal
+                vCtx.shadowBlur = 15;
                 vCtx.fillRect(x, y, barWidth - barGap, barHeight);
                 
                 // Reflejo superior
-                vCtx.fillStyle = color;
-                vCtx.globalAlpha = 0.3;
-                vCtx.fillRect(x, barGap, barWidth - barGap, barHeight);
+                vCtx.globalAlpha = 0.35;
+                vCtx.fillRect(x, 2, barWidth - barGap, barHeight * 0.6);
                 vCtx.globalAlpha = 1;
             }
 
