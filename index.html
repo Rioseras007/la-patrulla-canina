@@ -764,6 +764,24 @@
         const main = document.getElementById('mainContent');
         const splash = document.getElementById('splashScreen');
 
+        // Web Audio API Setup
+        let audioContext = null;
+        let analyser = null;
+        let dataArray = null;
+        let source = null;
+
+        function initAudioContext() {
+            if (audioContext) return;
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 256;
+            analyser.smoothingTimeConstant = 0.8;
+            source = audioContext.createMediaElementAudioSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+        }
+
         function initExperience() {
             splash.style.opacity = '0';
             setTimeout(() => {
@@ -852,6 +870,9 @@
             document.getElementById('playerBar').classList.add('active');
             document.getElementById('playBtn').innerText = '⏸';
 
+            // Inicializar Web Audio API
+            initAudioContext();
+
             audio.play().catch(e => console.log("Unlock needed"));
             render();
             // Focus on player
@@ -880,32 +901,55 @@
         function renderVFX() {
             requestAnimationFrame(renderVFX);
             vCtx.clearRect(0, 0, vCanvas.width, vCanvas.height);
-            if (!vfxEnabled) return;
+            if (!vfxEnabled || !analyser) return;
 
-            const bars = 60;
-            const barW = vCanvas.width / bars;
-            const time = Date.now() / 1000;
+            analyser.getByteFrequencyData(dataArray);
 
+            const bars = 64;
+            const barWidth = vCanvas.width / bars;
+            const barGap = 2;
+
+            // Dibujar fondo oscuro estilo Winamp
+            vCtx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+            vCtx.fillRect(0, 0, vCanvas.width, vCanvas.height);
+
+            // Dibujar las barras del ecualizador
             for (let i = 0; i < bars; i++) {
-                let h = 0;
-                if (!audio.paused) {
-                    // Premium Wave Visualizer (Simulated logic but highly attractive)
-                    h = (Math.sin(time * 12 + i * 0.4) + 1) * 0.5 * vCanvas.height * 0.9;
-                    h += Math.sin(time * 5 + i * 0.8) * 10;
-                    h += Math.random() * 5;
+                const index = Math.floor((i / bars) * dataArray.length);
+                const value = dataArray[index] / 255;
+                const barHeight = value * vCanvas.height * 0.95;
+
+                const x = i * barWidth + barGap / 2;
+                const y = vCanvas.height - barHeight;
+
+                // Gradiente de colores: Verde -> Amarillo -> Rojo (estilo Winamp)
+                let color;
+                if (value < 0.33) {
+                    color = `rgb(0, ${Math.floor(255 * (value / 0.33))}, 0)`; // Verde
+                } else if (value < 0.66) {
+                    const t = (value - 0.33) / 0.33;
+                    color = `rgb(${Math.floor(255 * t)}, 255, 0)`; // Verde a Amarillo
                 } else {
-                    h = (Math.sin(time * 3 + i * 0.2) + 1) * 3 + 2;
+                    const t = (value - 0.66) / 0.34;
+                    color = `rgb(255, ${Math.floor(255 * (1 - t))}, 0)`; // Amarillo a Rojo
                 }
 
-                const grad = vCtx.createLinearGradient(0, vCanvas.height, 0, 0);
-                grad.addColorStop(0, 'rgba(133, 76, 230, 0.1)');
-                grad.addColorStop(1, i % 2 === 0 ? 'var(--primary)' : 'var(--secondary)');
-
-                vCtx.fillStyle = grad;
-                vCtx.beginPath();
-                vCtx.roundRect(i * barW, vCanvas.height - h, barW - 3, h, [5, 5, 0, 0]);
-                vCtx.fill();
+                // Efecto de espejo (simétrico  arriba-abajo)
+                vCtx.fillStyle = color;
+                vCtx.shadowColor = color;
+                vCtx.shadowBlur = 10;
+                
+                // Barra principal
+                vCtx.fillRect(x, y, barWidth - barGap, barHeight);
+                
+                // Reflejo superior
+                vCtx.fillStyle = color;
+                vCtx.globalAlpha = 0.3;
+                vCtx.fillRect(x, barGap, barWidth - barGap, barHeight);
+                vCtx.globalAlpha = 1;
             }
+
+            vCtx.shadowBlur = 0;
         }
 
         audio.ontimeupdate = () => {
