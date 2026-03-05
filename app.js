@@ -6,7 +6,8 @@ const tracks = [
     { id: 5, title: "Gerbi: El Comandante Loco", artist: "Comandante Gerbi", file: "assets/05_Gerbi_Loco.mp3", cover: "https://via.placeholder.com/400x400/FF4500/FFFFFF?text=EL+COMANDANTE+LOCO", lyrics: ["[0:00] Gerbi se lanza sin pensar", "[0:05] Va por libre, es un alocado", "[0:10] Granadas por todos lados"] },
     { id: 6, title: "Amigos en el Battle Bus", artist: "The Squad", file: "assets/06_Battle_Bus.mp3", cover: "https://via.placeholder.com/400x400/854CE6/FFFFFF?text=BATTLE+BUS", lyrics: ["[0:00] La música del bus empieza", "[0:05] Listos para saltar"] },
     { id: 11, title: "Victoria Magistral", artist: "Champion Theme", file: "assets/11_Victoria_Magistral.mp3", cover: "https://via.placeholder.com/400x400/FFD700/000000?text=VICTORIA+MAGISTRAL", lyrics: ["[0:00] La tensión sube", "[0:05] Círculo final", "[0:10] Victoria asegurada"] },
-    { id: 12, title: "GG Patrulla", artist: "Outro Relax", file: "assets/12_GG_Patrulla.mp3", cover: "https://via.placeholder.com/400x400/00F2FF/000000?text=GG+PATRULLA", lyrics: ["[0:00] GG a todos", "[0:05] Mañana más"] }
+    { id: 12, title: "GG Patrulla", artist: "Outro Relax", file: "assets/12_GG_Patrulla.mp3", cover: "https://via.placeholder.com/400x400/00F2FF/000000?text=GG+PATRULLA", lyrics: ["[0:00] GG a todos", "[0:05] Mañana más"] },
+    { id: 13, title: "Pause la partida, Antonio", artist: "Alfonso Rubio", file: "assets/13_Pause la partida,Antonio.mp3", cover: "https://via.placeholder.com/400x400/FF6B35/FFFFFF?text=PAUSE+ANTONIO", lyrics: ["[0:00] Pausa la partida", "[0:05] Alfonso tiene que hablar", "[0:10] Un momento importante"] }
 ];
 
 // Elementos del DOM
