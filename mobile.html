@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LA PATRULLA CANINA | VICTORIA MAGISTRAL (MÓVIL)</title>
+    <meta name="description"
+        content="La Patrulla Canina - Experiencia de música y entretenimiento de alto nivel. Versión móvil.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Bebas+Neue&display=swap"
@@ -99,14 +101,15 @@
         }
 
         .song-art-box {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            border-radius: 8px;
             overflow: hidden;
-            flex-shrink: 0;
-            background: none;
-            margin-bottom: 0;
-            /* Override desktop */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .song-art-box img {
@@ -116,25 +119,22 @@
             display: block;
         }
 
-        /* No hover B&W effect on mobile */
-
         .song-info-row {
-            flex: 1;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            margin-bottom: 0;
-            gap: 0.5rem;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
         }
 
         .song-text {
-            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .song-title {
-            font-weight: 900;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1rem;
             color: var(--text-main);
             margin-bottom: 0.2rem;
             line-height: 1.2;
@@ -201,7 +201,6 @@
             align-self: flex-start;
         }
 
-        /* Player Bar */
         .player-bar {
             position: fixed;
             bottom: 0;
@@ -212,18 +211,13 @@
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            /* Stacked controls */
             z-index: 2000;
             border-top: 1px solid var(--primary);
             padding-bottom: 1.5rem;
-            /* Safe area */
-            transform: translateY(110%);
             transition: transform 0.3s;
         }
 
-        .player-bar.active {
-            transform: translateY(0);
-        }
+
 
         .player-top-row {
             display: flex;
@@ -352,34 +346,35 @@
 
     <footer>
         <div class="modern-social">
-            <a href="https://www.facebook.com/AlfonsoRubioRioseras" target="_blank" class="social-link facebook"
-                title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank" class="social-link instagram" title="Instagram"><i
-                    class="fab fa-instagram"></i></a>
-            <a href="https://x.com/alfrubrio" target="_blank" class="social-link x-twitter" title="X (Twitter)"><i
-                    class="fab fa-x-twitter"></i></a>
-            <a href="https://www.youtube.com/@AlfonsoRubioRioseras" target="_blank" class="social-link youtube"
-                title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@alfonsorubio007" target="_blank" class="social-link tiktok"
-                title="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://discord.com/" target="_blank" class="social-link discord" title="Discord"><i
-                    class="fab fa-discord"></i></a>
-            <a href="https://web.whatsapp.com/" target="_blank" class="social-link whatsapp" title="WhatsApp"><i
-                    class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/alfonsorubiorioseras/" target="_blank" class="social-link linkedin"
-                title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/Rioseras007" target="_blank" class="social-link github" title="GitHub"><i
-                    class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/AlfonsoRubioRioseras" target="_blank" rel="noopener noreferrer"
+                class="social-link facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link instagram"
+                title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/alfrubrio" target="_blank" rel="noopener noreferrer" class="social-link x-twitter"
+                title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@AlfonsoRubioRioseras" target="_blank" rel="noopener noreferrer"
+                class="social-link youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@alfonsorubio007" target="_blank" rel="noopener noreferrer"
+                class="social-link tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="social-link discord"
+                title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer" class="social-link whatsapp"
+                title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/alfonsorubiorioseras/" target="_blank" rel="noopener noreferrer"
+                class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Rioseras007" target="_blank" rel="noopener noreferrer"
+                class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
         <p>© 2026 LA PATRULLA CANINA | SQUAD RECORDS PRO</p>
     </footer>
 
     <div class="player-bar" id="playerBar">
         <div class="player-top-row">
-            <img src="" class="player-art-mini" id="pArt">
+            <img src="assets/01_La_Patrulla_Canina.jpg" onerror="this.style.display='none'" class="player-art-mini"
+                id="pArt">
             <div class="player-info-mini">
-                <h3 id="pTitle">Título</h3>
-                <p>PATRULLA CANINA</p>
+                <h3 id="pTitle">SELECCIONA UNA PISTA</h3>
+                <p>EL SQUAD</p>
             </div>
         </div>
 
@@ -393,9 +388,10 @@
 
         <div class="player-controls-row" style="margin-top: 1rem; justify-content: center;">
             <div class="control-btns">
-                <button class="btn-ctrl" onclick="prev()">⏮</button>
-                <button class="btn-ctrl btn-play-big" onclick="toggle()" id="playBtn">▶</button>
-                <button class="btn-ctrl" onclick="next()">⏭</button>
+                <button class="btn-ctrl" onclick="prev()"><i class="fas fa-step-backward"></i></button>
+                <button class="btn-ctrl btn-play-big" onclick="toggle()" id="playBtn"><i class="fas fa-play"
+                        style="margin-left: 3px;"></i></button>
+                <button class="btn-ctrl" onclick="next()"><i class="fas fa-step-forward"></i></button>
             </div>
         </div>
     </div>
@@ -415,7 +411,8 @@
             { "id": 9, "t": "Medikit para el Alma", "file": "assets/09_Medikit_Alma.mp3", "art": "assets/__track_9__medikit_para_el_alma.jpg" },
             { "id": 10, "t": "El Salto del Comandante", "file": "assets/10_Salto_Gerbi.mp3", "art": "assets/__track_10__el_salto_del_comandante.jpg" },
             { "id": 11, "t": "Victoria Magistral", "file": "assets/11_Victoria_Magistral.mp3", "art": "assets/__track_11__victoria_magistral.jpg" },
-            { "id": 12, "t": "GG Patrulla", "file": "assets/12_GG_Patrulla.mp3", "art": "assets/__track_12__gg_patrulla.jpg" }
+            { "id": 12, "t": "GG Patrulla", "file": "assets/12_GG_Patrulla.mp3", "art": "assets/__track_12__gg_patrulla.jpg" },
+            { "id": 13, "t": "Pause la partida, Antonio", "file": "assets/13_Pause la partida, Antonio.mp3", "art": "assets/__track_13__pause_la_partida_antonio.jpg" }
         ];
 
         let index = -1;
@@ -432,11 +429,16 @@
                         <img src="${track.art}" alt="">
                     </div>
                     <div class="song-info-row">
-                        <div class="song-text">
-                            <div class="song-title">${track.t}</div>
-                            <div class="song-artist">TRACK #${track.id}</div>
+                        <div class="song-text" style="display:flex; align-items:center; gap: 1rem;">
+                            <div style="background: var(--primary); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-${i === index && !audio.paused ? 'pause' : 'play'}" style="margin-left: ${i === index && !audio.paused ? '0' : '3px'}; font-size: 0.8rem;"></i>
+                            </div>
+                            <div>
+                                <div class="song-title">${track.t}</div>
+                                <div class="song-artist">TRACK #${track.id}</div>
+                            </div>
                         </div>
-                        <button class="btn-download" onclick="event.stopPropagation(); downloadTrack('${track.file}', '${track.t}.mp3')">DESCARGAR</button>
+                        <button class="btn-download" onclick="event.stopPropagation(); downloadTrack('${track.file}', '${track.t}.mp3')"><i class="fas fa-download"></i></button>
                     </div>
                 `;
                 card.onclick = () => play(i);
@@ -461,15 +463,24 @@
             audio.src = song.file;
             document.getElementById('pTitle').innerText = song.t;
             document.getElementById('pArt').src = song.art;
-            document.getElementById('playerBar').classList.add('active');
-            document.getElementById('playBtn').innerText = '⏸';
+            document.getElementById('playBtn').innerHTML = '<i class="fas fa-pause"></i>';
             audio.play();
             render();
         }
 
         function toggle() {
-            if (audio.paused) { audio.play(); document.getElementById('playBtn').innerText = '⏸'; }
-            else { audio.pause(); document.getElementById('playBtn').innerText = '▶'; }
+            if (audio.src === "" || audio.src.endsWith("mobile.html") || audio.src.endsWith("index.html")) {
+                if (tracks.length > 0) play(0);
+                return;
+            }
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('playBtn').innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audio.pause();
+                document.getElementById('playBtn').innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+            }
+            render();
         }
 
         function next() { play((index + 1) % tracks.length); }
@@ -488,6 +499,9 @@
             const sec = Math.floor(s % 60);
             return `${m}:${sec < 10 ? '0' : ''}${sec}`;
         }
+
+        // Auto-play next track when current one ends
+        audio.onended = () => next();
 
         render();
     </script>
